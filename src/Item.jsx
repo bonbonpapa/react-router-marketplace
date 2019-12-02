@@ -6,9 +6,14 @@ class Item extends Component {
     return (<div className="card center "> 
       <img height="100px" src={this.props.imageLocation} /> 
       <div> 
-        <div>{this.props.description}</div> 
-        <div>{this.props.cost}</div> 
-        <Link to={"/seller/" + this.props.sellerId}> Link to seller </Link> 
+        <div>{"Description: " + this.props.description}</div> 
+        <div>{"Price: " + this.props.cost + "$"}</div> 
+        <div>
+          <Link to={"/seller/" + this.props.sellerId}> Link to seller </Link> 
+        </div>
+        <div>
+          <Link to={"/details/"+ this.props.itemId}> Link to details </Link> 
+        </div>        
       </div>
     </div>) 
   } 
