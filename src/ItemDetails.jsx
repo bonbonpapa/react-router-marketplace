@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom' 
 import './App.css'; 
 import {reviews} from './Data.js' 
+
 class ItemDetails extends Component {  
+  
+ addToShoppingList = () => {
+   this.props.addToShoppingList(this.props.item);
+ }
+  
+  
+  
   render() { 
 
     let reviewsforitem = reviews.filter(review => {
@@ -11,18 +19,7 @@ class ItemDetails extends Component {
     
     let reviewdetails = "";
 
-    // if(reviewsforitem.length === 0)
-    // {
-    //   reviewdetails = <div>No reviews for this item.</div>
-    // } 
-    // else
-    // {
-    //   reviewdetails = reviewsforitem.map(review => {
-    //   return (
-    //             <div>{review.contents}</div>
-    //         )
-    // })
-    // }
+
 
     reviewdetails = reviewsforitem.length===0 ? <div>No reviews for this item.</div> : reviewsforitem.map(review => {
       return (
@@ -34,14 +31,24 @@ class ItemDetails extends Component {
     });
        
 
-    return (<div className="card center "> 
-      <img height="100px" src={this.props.item.image} /> 
-      <div> 
-        <div>{"Inventory: " + this.props.item.inventory}</div>
-        <h3>Reviews for this item</h3>  
-        {reviewdetails}             
+    return (
+      <div>
+        <div className="card center ">
+          <Link to={"/shoppingcart"}>Total items in the cart  </Link>
+        </div>
+        <div className="card center ">
+          <img height="100px" src={this.props.item.image} />
+          <div>
+            <div>{"Inventory: " + this.props.item.inventory}</div>
+            <button type="button" onClick={this.addToShoppingList}>
+              Add to cart
+            </button>
+            <h3>Reviews for this item</h3>
+            {reviewdetails}
+          </div>
+        </div>
       </div>
-    </div>) 
+    ); 
   } 
 } 
 export default ItemDetails; 
