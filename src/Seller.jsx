@@ -1,13 +1,13 @@
 import React, { Component } from 'react'; 
 import { Link } from 'react-router-dom' 
 import './App.css'; 
-import {initialItems, initialSellers } from './Data.js' 
+import { initialSellers } from './Data.js' 
 class Seller extends Component { 
   render() { 
 
     let sellId = this.props.seller.id;
 
-    let itemsofSeller = initialItems.filter(item => {
+    let itemsofSeller = this.props.items.filter(item => {
       return item.sellerId === sellId;
     }) 
 
@@ -36,7 +36,10 @@ class Seller extends Component {
         <div>{this.props.seller.rating}</div> 
         <ul>
             {itemsdetails}
-        </ul>        
+        </ul>    
+        <div>
+        <Link to={"/updateItems/"+this.props.seller.id}>Update selling items</Link>
+        </div>    
       </div> 
     ); 
   } 

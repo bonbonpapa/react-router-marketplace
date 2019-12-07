@@ -1,18 +1,15 @@
 import React, { Component } from 'react'; 
 import './App.css'; 
-import {shoppingList} from './App.jsx';
 class ItemInCart extends Component { 
   
-OnDeleteItemfromClick = event => {
-  // let newshoppingList = shoppingList.filter(x=> {return !(x===this.props.itemId)});
-  // shoppingList = newshoppingList;
-  shoppingList = [];
-}
+  deletefromShoppingList = () => {
+    this.props.deleteItemInCart(this.props.item);
+  }
   render() { 
     return (
       <div> 
-        <li>{"Description: " + this.props.itemId}</li>
-        <button type='button' onClick={this.OnDeleteItemfromClick}>Delete</button>
+        <li>{"Description: " + this.props.item.description}</li>
+        <button type='button' onClick={this.deletefromShoppingList}>Delete</button>
       </div>
     ) 
   } 

@@ -34,13 +34,11 @@ class ItemDetails extends Component {
     return (
       <div>
         <div className="card center ">
-          <Link to={"/shoppingcart"}>Total items in the cart  </Link>
-        </div>
-        <div className="card center ">
           <img height="100px" src={this.props.item.image} />
           <div>
             <div>{"Inventory: " + this.props.item.inventory}</div>
-            <button type="button" onClick={this.addToShoppingList}>
+            {/* <button type="button" onClick={this.addToShoppingList}> */     }      
+            <button type="button" onClick={() => {this.addToShoppingList()}}>
               Add to cart
             </button>
             <h3>Reviews for this item</h3>

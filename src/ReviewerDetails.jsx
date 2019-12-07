@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
 import { Link } from 'react-router-dom' 
 import './App.css'; 
-import {reviews, initialItems} from './Data.js' 
+import {reviews} from './Data.js' 
 class ReviewerDetails extends Component {  
   render() { 
 
@@ -16,7 +16,7 @@ class ReviewerDetails extends Component {
         <div>No reviews for user.</div>
       ) : (
         reviewsofReviewer.map(review => {
-          let itemtoDisplay = initialItems.find(item => {
+          let itemtoDisplay = this.props.items.find(item => {
             return item.id === review.itemId
           })
           return (

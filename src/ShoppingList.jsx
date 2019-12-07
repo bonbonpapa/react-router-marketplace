@@ -1,20 +1,28 @@
 import React, { Component } from 'react'; 
 import { Link } from 'react-router-dom' 
+import ItemInCart from './ItemInCart.jsx'
 import './App.css'; 
 class ShoppingList extends Component {  
+  
+OnCheckoutItems = () => {
+  this.props.setHistory(this.props.list);
+  this.props.clearList();
+  
+
+}
+
+
   render() { 
     return (<div className="card center "> 
-      <img height="100px" src={this.props.imageLocation} /> 
-      <div> 
-        <div>{"Description: " + this.props.description}</div> 
-        <div>{"Price: " + this.props.cost + "$"}</div> 
-        <div>
-          <Link to={"/seller/" + this.props.sellerId}> Link to seller </Link> 
-        </div>
-        <div>
-          <Link to={"/details/"+ this.props.itemId}> Link to details </Link> 
-        </div>        
-      </div>
+     { this.props.list.map(item => 
+      <ItemInCart item={item} deleteItemInCart={this.props.deletefromList}/>)  
+     }  
+    <button type="button" onClick={this.OnCheckoutItems}>Confirm order</button>
+    <div>
+    <Link to={"/pay"}>Payment Here</Link>
+    </div>
+    
+    
     </div>) 
   } 
 } 
